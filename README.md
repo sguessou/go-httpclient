@@ -1,2 +1,2 @@
 # go-httpclient
-Lightweight HTTP client in Go
+Lightweight HTTP client in Go from scratch

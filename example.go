@@ -7,10 +7,28 @@ import (
 	"github.com/sguessou/go-httpclient/gohttp"
 )
 
-func main() {
+var (
+	httpClient = getGithubClient()
+)
+
+func getGithubClient() gohttp.HttpClient {
 	client := gohttp.New()
 
-	resp, err := client.Get("https://api.github.com", nil)
+	// commonHeaders := make(http.Header)
+	// commonHeaders.Set("Authorization", "Bearer abc-124")
+	// client.SetHeaders(commonHeaders)
+
+	return client
+}
+
+type User struct {
+	FirstName string `json:"first_name"`
+	LastName  string `json:"last_name"`
+}
+
+func main() {
+
+	resp, err := httpClient.Get("https://api.github.com", nil)
 	if err != nil {
 		panic(err)
 	}
