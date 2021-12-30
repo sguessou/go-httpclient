@@ -27,7 +27,12 @@ type User struct {
 }
 
 func main() {
+	getUrls()
+	getUrls()
 
+}
+
+func getUrls() {
 	resp, err := httpClient.Get("https://api.github.com", nil)
 	if err != nil {
 		panic(err)
@@ -37,5 +42,4 @@ func main() {
 
 	bytes, _ := ioutil.ReadAll(resp.Body)
 	fmt.Println(string(bytes))
-
 }
