@@ -11,8 +11,8 @@ var (
 	httpClient = getGithubClient()
 )
 
-func getGithubClient() gohttp.HttpClient {
-	client := gohttp.New()
+func getGithubClient() gohttp.Client {
+	client := gohttp.NewBuilder().DisableTimeouts(true).Build()
 
 	// client.SetMaxIdleconnections(20)
 	// client.SetConnectionTimeout(2 * time.Second)
