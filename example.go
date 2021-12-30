@@ -14,6 +14,10 @@ var (
 func getGithubClient() gohttp.HttpClient {
 	client := gohttp.New()
 
+	// client.SetMaxIdleconnections(20)
+	// client.SetConnectionTimeout(2 * time.Second)
+	// client.SetResponseTimeout(4 * time.Millisecond)
+
 	// commonHeaders := make(http.Header)
 	// commonHeaders.Set("Authorization", "Bearer abc-124")
 	// client.SetHeaders(commonHeaders)
