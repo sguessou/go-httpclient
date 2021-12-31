@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 
 	"github.com/sguessou/go-httpclient/gohttp"
 )
@@ -14,7 +13,6 @@ var (
 func getGithubClient() gohttp.Client {
 	client := gohttp.
 		NewBuilder().
-		DisableTimeouts(true).
 		Build()
 
 	// client.SetMaxIdleconnections(20)
@@ -43,8 +41,7 @@ func getUrls() {
 		panic(err)
 	}
 
-	fmt.Println(resp.StatusCode)
-
-	bytes, _ := ioutil.ReadAll(resp.Body)
-	fmt.Println(string(bytes))
+	fmt.Println(resp.Status())
+	fmt.Println(resp.StatusCode())
+	fmt.Println(resp.String())
 }
