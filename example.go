@@ -12,7 +12,10 @@ var (
 )
 
 func getGithubClient() gohttp.Client {
-	client := gohttp.NewBuilder().DisableTimeouts(true).Build()
+	client := gohttp.
+		NewBuilder().
+		DisableTimeouts(true).
+		Build()
 
 	// client.SetMaxIdleconnections(20)
 	// client.SetConnectionTimeout(2 * time.Second)
@@ -32,8 +35,6 @@ type User struct {
 
 func main() {
 	getUrls()
-	getUrls()
-
 }
 
 func getUrls() {

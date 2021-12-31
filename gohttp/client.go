@@ -2,18 +2,14 @@ package gohttp
 
 import (
 	"net/http"
-	"time"
+	"sync"
 )
 
 type httpClient struct {
-	client *http.Client
+	builder *clientBuilder
 
-	maxIdleConnections int
-	connectionTimeout  time.Duration
-	responseTimeout    time.Duration
-	disableTimeouts    bool
-
-	headers http.Header
+	client     *http.Client
+	clientOnce sync.Once
 }
 
 type Client interface {
