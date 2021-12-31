@@ -43,6 +43,11 @@ func (c *httpClient) do(method, url string, headers http.Header, body interface{
 		return nil, err
 	}
 
+	// Will need refactoring
+	if mock := mockupServer.getMock(method, url, string(requestBody)); mock != nil {
+		return mock.GetResponse()
+	}
+
 	request, err := http.NewRequest(method, url, bytes.NewBuffer(requestBody))
 	if err != nil {
 		return nil, errors.New("Unable to create a new request")
